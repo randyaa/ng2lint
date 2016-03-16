@@ -20,7 +20,8 @@ Below you can find a recommended configuration which is based on the [Angular 2 
   "attribute-parameter-decorator": true,
   "input-property-directive": true,
   "output-property-directive": true,
-  "call-forward-ref":true
+  "call-forward-ref":true,
+  "no-inject-decorator":true
 }
 ```
 
@@ -44,7 +45,7 @@ Below you can find a recommended configuration which is based on the [Angular 2 
 - [ ] Rise a warning for impure pipes.
 - [ ] Do not declare global providers.
 - [ ] Follow convention for naming the routes.
-- [ ] Use `@Injectable` instead of `@Inject`.
+- [x] Use `@Injectable` instead of `@Inject`.
 - [ ] Single export per module, except facade modules.
 - [ ] Proper naming of modules (kebab-case followed by module type followed by extension for regular modules, module name plus extension name for facades).
 - [ ] Verify if used directive is declared in the current component or any parent component.
