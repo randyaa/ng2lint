@@ -11,8 +11,8 @@ export class Rule extends Lint.Rules.AbstractRule {
     }
 
     static  FAILURE_STRING:string = 'In the constructor of class "%s", ' +
-        'the parameter "%s" uses the @Inject decorator, which is considered as a bad practice.' +
-        ' Please, declare the service with the @Injectable decorator';
+        'the parameter "%s" uses the @Inject decorator, which is considered a bad practice.' +
+        ' Please, declare the injected class with the @Injectable decorator';
 
 }
 
@@ -32,8 +32,8 @@ export class ConstructorMetadataWalker extends Lint.RuleWalker {
                 let expr = baseExpr.expression || {};
                 let name = expr.text;
                 if (name == 'Inject') {
-                    let failureConfig:string[] = [className, parameterName];
-                    failureConfig.unshift(Rule.FAILURE_STRING);
+                    let failureConfig:string[] = [Rule.FAILURE_STRING,
+                        className, parameterName];
                     this.addFailure(
                         this.createFailure(
                             parameter.getStart(),

@@ -30,13 +30,15 @@ export class ExpressionCallMetadataWalker extends Lint.RuleWalker {
             while (currentNode.parent.parent) {
                 currentNode = currentNode.parent;
             }
-            let failureConfig:string[] = [currentNode.name.text];
-            failureConfig.unshift(Rule.FAILURE_STRING);
-            this.addFailure(
-                this.createFailure(
-                    callExpression.getStart(),
-                    callExpression.getWidth(),
-                    sprintf.apply(this, failureConfig)));
+            let name = currentNode.name;
+            if (name && name.text) {
+                let failureConfig:string[] = [Rule.FAILURE_STRING, name.text];
+                this.addFailure(
+                    this.createFailure(
+                        callExpression.getStart(),
+                        callExpression.getWidth(),
+                        sprintf.apply(this, failureConfig)));
+            }
         }
     }
 

@@ -9,7 +9,7 @@ describe('no-inject-decorator', () => {
             }`;
             assertFailure('no-inject-decorator', source, {
                 message: 'In the constructor of class "AppComponent", the parameter "dataService" uses the @Inject decorator, ' +
-                'which is considered as a bad practice. Please, declare the service with the @Injectable decorator',
+                'which is considered a bad practice. Please, declare the injected class with the @Injectable decorator',
                 startPosition: {
                     line: 2,
                     character: 28

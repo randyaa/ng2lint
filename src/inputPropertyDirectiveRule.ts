@@ -23,8 +23,8 @@ export class InputMetadataWalker extends Ng2Walker {
         let className = (<any>property).parent.name.text;
         let memberName = (<any>property.name).text;
         if (args.length != 0 && memberName != args[0]) {
-            let failureConfig:string[] = [className, memberName, memberName];
-            failureConfig.unshift(Rule.FAILURE_STRING);
+            let failureConfig:string[] = [Rule.FAILURE_STRING,
+                className, memberName, memberName];
             this.addFailure(
                 this.createFailure(
                     property.getStart(),
