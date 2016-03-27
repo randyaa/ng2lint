@@ -13,7 +13,7 @@ export class FileNameRule extends Lint.Rules.AbstractRule {
                 disabledIntervals: Lint.IDisabledInterval[],
                 //private validator: Function,
                 private failureString: string,
-                private target: COMPONENT_TYPE = COMPONENT_TYPE.ANY) {
+                public targetType: COMPONENT_TYPE = COMPONENT_TYPE.ANY) {
         super(ruleName, value, disabledIntervals);
     }
 
@@ -31,9 +31,10 @@ export class FileNameRule extends Lint.Rules.AbstractRule {
 }
 
 class FileNameValidatorWalker extends Lint.RuleWalker {
+    private languageService : ts.LanguageService;
     private typeChecker : ts.TypeChecker;
 
-    constructor(private sourceFile: ts.SourceFile, private languageService : ts.LanguageService, private rule: FileNameRule) {
+    constructor(sourceFile: ts.SourceFile, languageService : ts.LanguageService, private rule: FileNameRule) {
         super(sourceFile, rule.getOptions());
         this.typeChecker = languageService.getProgram().getTypeChecker();
     }
